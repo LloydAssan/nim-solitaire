@@ -1,7 +1,6 @@
 package com.tlglearning.nim.model;
 
 public class Pile {
-    
     // attributes - fields
     private int removed;
     private int remaining;
@@ -13,8 +12,13 @@ public class Pile {
         this.remaining = remaining;
     }
 
+    // TODO: 10/24/22 In Pile, complete the implementation of the isEmpty method, so that it
+    //  returns true if the number remaining is positive, and false otherwise.
     // method
     public boolean isEmpty(){
+        if (remaining > 0){
+            return false;
+        }
         return true;
     }
 

@@ -7,10 +7,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PileTest {
 
-    // TODO: 10/20/22  Implement tests (with expected return values of true and false) for isEmplty method of Pile class
+    // TODO: 10/20/22  Implement tests (with expected return values of true and false) for isEmpty method of Pile class
     @Test
     void isEmpty() {
-        fail("Test not yet implemented");
+        Pile pile = new Pile(10);
+        assertEquals(0, pile.remove(10));
+        assertTrue(true);
     }
 
     @Test

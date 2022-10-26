@@ -4,9 +4,11 @@ import com.tlglearning.nim.model.Pile;
 
 public class PileView {
 
-    public String toString(Pile pile){
-        throw new UnsupportedOperationException();
-        // TODO: 10/20/22 Construct and return a sting using a combination of characters showing removed and remaining in the pile (look up unicode)
-        // TODO: 10/20/22  Write an enum in model package for state that and include methods
+    private static final String REMOVED = "\u2542";
+    private static final String REMAINING = "\u2503";
+
+    public String toString(Pile pile) {
+        return REMOVED.repeat(pile.getRemoved()) + " " + REMAINING.repeat(pile.getRemaining());
     }
+
 }

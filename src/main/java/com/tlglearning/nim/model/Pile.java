@@ -1,42 +1,46 @@
 package com.tlglearning.nim.model;
 
 public class Pile {
-    // attributes - fields
+
+    private static final String BAD_SIZE_FORMAT = "Invalid size: %d; must be non-negative.";
+    private static final String BAD_REMOVE_QUANTITY_FORMAT =
+            "Invalid quantity: %d; must not exceed number remaining (%d).";
+    private static final String TO_STRING_FORMAT = "Pile{removed=%d, remaining=%d}";
+
     private int removed;
     private int remaining;
 
-    // constructor
-    public Pile(int remaining){
+    public Pile(int size) throws IllegalArgumentException {
+        if (size < 0) {
+            throw new IllegalArgumentException(String.format(BAD_SIZE_FORMAT, size));
+        }
         removed = 0;
-        // this is used here for representing the current instance of this remaining
-        this.remaining = remaining;
+        remaining = size;
     }
 
-    // TODO: 10/24/22 In Pile, complete the implementation of the isEmpty method, so that it
-    //  returns true if the number remaining is positive, and false otherwise.
-    // method
-    public boolean isEmpty(){
-        if (remaining > 0){
-            return false;
+    public int remove(int quantity){
+        if (quantity > remaining) {
+            throw new IllegalArgumentException(
+                    String.format(BAD_REMOVE_QUANTITY_FORMAT, quantity, remaining));
         }
-        return true;
+        removed += quantity;
+        return (remaining -= quantity);
     }
 
-    public int remove(int quantity) {
-        if (quantity > remaining){
-            throw new IllegalArgumentException("Quantity to remove must not exceed quantity remaining.");
-        }
-        removed = removed + quantity;  // removed += quantity;
-        remaining = remaining - quantity; // remaining -= quantity;
-        return remaining;
+    public boolean isEmpty() {
+        return remaining == 0;
     }
 
-    // getters/setters
     public int getRemoved() {
         return removed;
     }
 
     public int getRemaining() {
         return remaining;
+    }
+
+    @Override
+    public String toString() {
+        return String.format(TO_STRING_FORMAT, removed, remaining);
     }
 }

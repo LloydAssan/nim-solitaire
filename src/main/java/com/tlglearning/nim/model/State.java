@@ -1,27 +1,56 @@
 package com.tlglearning.nim.model;
 
-import java.util.EnumSet;
-import java.util.Set;
-
 public enum State {
-    PLAYER 1 MOVE,
-    PLAYER 2 MOVE,
-    PLAYER 1 WIN,
-    PLAYER 2 WIN
+
+    PLAYER_1_MOVE {
+        // anonymous subclass to override other 3 methods
+        @Override
+        public boolean isTerminal() {
+            return false;
+        }
+
+        @Override
+        public State nextMoveState() {
+            return PLAYER_2_MOVE;
+        }
+
+        @Override
+        public State nextWinState() {
+            return PLAYER_1_WIN;
+        }
+    },
+
+    PLAYER_2_MOVE {
+        @Override
+        public boolean isTerminal() {
+            return false;
+        }
+
+        @Override
+        public State nextMoveState() {
+            return PLAYER_1_MOVE;
+        }
+
+        @Override
+        public State nextWinState() {
+            return PLAYER_2_WIN;
+        }
+    },
+
+    PLAYER_1_WIN,
+
+    PLAYER_2_WIN;
+
+    public boolean isTerminal() {
+        return true;
+    }
+
+    public State nextMoveState() {
+        return this;
+    }
+
+    public State nextWinState() {
+        return this;
+    }
+
 }
-
-    //Methods
-    public boolean isTerminal(){
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
-    public State nextMoveState(){
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
-    public State nextWinState(){
-        throw new UnsupportedOperationException("Not yet implemented");
-    }
-
-}
-

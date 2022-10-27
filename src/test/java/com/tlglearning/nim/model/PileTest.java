@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 class PileTest {
-
     private static final int PILE_SIZE = 10;
 
     @Test
@@ -44,5 +43,4 @@ class PileTest {
         pile.remove(PILE_SIZE);
         assertTrue(pile.isEmpty());
     }
-
 }

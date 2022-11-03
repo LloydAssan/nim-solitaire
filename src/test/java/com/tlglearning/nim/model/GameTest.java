@@ -8,19 +8,19 @@ import org.junit.jupiter.api.function.Executable;
 class GameTest {
 
     @Test
-    // starting a game from anythign other than player1 or player 2 move
-    void constructor_badState(){
+        // starting a game from anythign other than player1 or player 2 move
+    void constructor_badState() {
         assertThrows(IllegalArgumentException.class, new Executable() {
             @Override
             public void execute() throws Throwable {
-                new Game(State.PLAYER_1_WIN, new int[]{3,5,7});
+                new Game(State.PLAYER_1_WIN, new int[]{3, 5, 7});
             }
         });
 
     }
 
     @Test
-    void constructor_badPileSizes(){
+    void constructor_badPileSizes() {
         // can change executable to a lambda
         assertThrows(IllegalArgumentException.class, new Executable() {
             @Override
@@ -46,11 +46,11 @@ class GameTest {
     }
 
     @Test
-    void play_whenGameAlreadyFinished(){
-            Game game = new Game(State.PLAYER_1_MOVE, new int[]{3, 5, 7});
-            for (Pile pile : game.getPiles()) {
-                pile.remove(pile.getRemaining());
-            }
+    void play_whenGameAlreadyFinished() {
+        Game game = new Game(State.PLAYER_1_MOVE, new int[]{3, 5, 7});
+        for (Pile pile : game.getPiles()) {
+            game.play(pile, pile.getRemaining());
+        }
         assertThrows(IllegalStateException.class, () -> game.play(game.getPiles().get(0), 1));
     }
 

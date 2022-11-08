@@ -8,12 +8,11 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-class GameView {
+public class GameView {
 
     private static final String PILE_SEPARATOR = System.lineSeparator().repeat(2);
 
     public String toString(Game game){
-        // TODO: 11/1/22 Include the state of the game in the output
         PileView pileView = new PileView();
         // iterating over two lists
         List<Game.Pile> piles = game.getPiles();

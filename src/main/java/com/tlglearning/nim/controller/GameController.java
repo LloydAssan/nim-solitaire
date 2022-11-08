@@ -9,9 +9,10 @@ class GameController {
     private final GameView view;
 
     // ctor
-    public GameController(Game.State state, int[] pileSizes){
-        this.game = game;
-        this.view = view;
+    // int[] is the same as int...(var args)
+    public GameController(Game.State initialState, int... pileSizes){
+        game = new Game(initialState, pileSizes);
+        view = new GameView();
     }
 
 }

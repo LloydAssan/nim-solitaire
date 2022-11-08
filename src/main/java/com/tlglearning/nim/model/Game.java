@@ -9,7 +9,8 @@ public class Game {
     private State state;
 
     // constructor
-    public Game(State state, int[] pileSizes) throws IllegalArgumentException {
+    // int[] is the same as int...(var args)
+    public Game(State state, int... pileSizes) throws IllegalArgumentException {
         if(state.isTerminal()){
             throw new IllegalArgumentException("Game must start in non-terminal state");
         }
